@@ -84,12 +84,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                         break;
                     case "LOGIN":
-                        if (enter_codeET.getText().toString().equals(code)) {
+                        if (enter_codeET.getText().toString().equals(String.valueOf(code))) {
                             Intent intent = new Intent(context, SecondActivity.class);
                             startActivity(intent);
                             finish();
-                        }else{
-                            Toast.makeText(context,"Wrong password!",Toast.LENGTH_LONG);
+                        } else {
+                            Toast.makeText(context, "Wrong password!", Toast.LENGTH_LONG).show();
                         }
 
                         break;
@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(numPhone, null, smsMassage, null, null);
-
 
 
     }
