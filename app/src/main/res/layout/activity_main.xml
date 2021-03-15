@@ -37,7 +37,7 @@
             android:src="@drawable/red_magnet" />
 
         <ImageView
-            android:id="@+id/mic"
+            android:id="@+id/proximitys"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

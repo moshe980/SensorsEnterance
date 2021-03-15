@@ -19,12 +19,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     final int SEND_SMS_PERMISSION_REQUEST_CODE = 1;
     ImageView orientationImg;
-    ImageView micImg;
+    ImageView proximitysImg;
     ImageView lightImg;
     ImageView magnetImg;
     TextView textView;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sendBtn.setVisibility(View.GONE);
 
         orientationImg = findViewById(R.id.orientation);
-        micImg = findViewById(R.id.mic);
+        proximitysImg = findViewById(R.id.proximitys);
         lightImg = findViewById(R.id.light);
         magnetImg = findViewById(R.id.magnet);
 
@@ -147,9 +149,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 if (lightValue == 0) {
                     lightImg.setImageResource(R.drawable.green_light);
+                    Glide.with(this).load(R.drawable.green_light).into(lightImg);
                     lightFlag = true;
                 } else {
-                    lightImg.setImageResource(R.drawable.red_light);
+                    Glide.with(this).load(R.drawable.red_light).into(lightImg);
                     lightFlag = false;
 
                 }
@@ -160,10 +163,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 int degree = Math.round(event.values[0]);
 
                 if (degree < 10 && degree > -10) {
-                    orientationImg.setImageResource(R.drawable.green_orientation);
+                    Glide.with(this).load(R.drawable.green_orientation).into(orientationImg);
                     orientationFlag = true;
                 } else {
-                    orientationImg.setImageResource(R.drawable.red_orientation);
+                    Glide.with(this).load(R.drawable.red_orientation).into(orientationImg);
                     orientationFlag = false;
 
                 }
@@ -180,10 +183,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
                 if (tesla >= 200) {
-                    magnetImg.setImageResource(R.drawable.green_magnet);
+                    Glide.with(this).load(R.drawable.green_magnet).into(magnetImg);
                     magnetFlag = true;
                 } else {
-                    magnetImg.setImageResource(R.drawable.red_magnet);
+                    Glide.with(this).load(R.drawable.red_magnet).into(magnetImg);
                     magnetFlag = false;
 
                 }
@@ -195,10 +198,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 float proximityValue = event.values[0];
 
                 if (proximityValue < proximitySensor.getMaximumRange()) {
-                    micImg.setImageResource(R.drawable.green_proximity);
+                    Glide.with(this).load(R.drawable.green_proximity).into(proximitysImg);
                     proximityFlag = true;
                 } else {
-                    micImg.setImageResource(R.drawable.red_proximity);
+                    Glide.with(this).load(R.drawable.red_proximity).into(proximitysImg);
                     proximityFlag = false;
                 }
                 checkFlags();
