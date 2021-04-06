@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     sendSMS(enter_codeET.getText().toString());
                     sendBtn.setText("LOGIN");
                     enter_codeET.getText().clear();
-                    enter_codeET.setHint("Enter the code you receive");
+                    enter_codeET.setHint("Enter the code you received");
                 } else {
                     getPermission(Manifest.permission.SEND_SMS);
 
@@ -337,7 +337,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
                 int tesla = (int) Math.sqrt((azimuth * azimuth) + (pitch * pitch) + (roll * roll));
-                if (tesla >= 200) {
+
+                if (tesla <=30) {
                     Glide.with(this).load(R.drawable.green_magnet).into(magnetImg);
                     magnetFlag = true;
                 } else {
@@ -360,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
            degree = (float) (-Orientation[0] * 180 / Math.PI);
             System.out.println(degree);
 
-            if (degree < 40 && degree > -40) {
+            if (degree < 20 && degree > -20) {
                 Glide.with(this).load(R.drawable.green_orientation).into(orientationImg);
                 orientationFlag = true;
             } else {
@@ -380,13 +381,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             wifiFlag = true;
         }
 
-/*        if (mBluetoothAdapter.isEnabled()) {
+        if (mBluetoothAdapter.isEnabled()) {
             Glide.with(this).load(R.drawable.red_bluetooth).into(bluetoothImg);
             bluetoothFlag = false;
         } else {
             Glide.with(this).load(R.drawable.green_bluetooth).into(bluetoothImg);
             bluetoothFlag = true;
-        }*/
+        }
 
         if (isMuted(audioManager)) {
             Glide.with(this).load(R.drawable.green_mute).into(muteImg);
